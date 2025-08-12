@@ -1,33 +1,45 @@
 #!/usr/bin/env node
 import { FastMCP } from "fastmcp";
-import { weatherTool } from "./tools/weather.js";
+import { cancelOrderTool } from "./tools/cancel-order.js";
+import { createOrderTool } from "./tools/create-order.js";
+import { getAccountsTool } from "./tools/get-accounts.js";
+import { getOrderTool } from "./tools/get-order.js";
+import { getOrderbookTool } from "./tools/get-orderbook.js";
+import { getOrdersTool } from "./tools/get-orders.js";
+import { getTickerTool } from "./tools/get-ticker.js";
+import { getTradesTool } from "./tools/get-trades.js";
 
 async function main() {
-	console.log("Initializing Weather MCP Server...");
+	console.log("Initializing Upbit MCP Server...");
 
 	const server = new FastMCP({
-		name: "Weather MCP Server",
+		name: "Upbit MCP Server",
 		version: "0.0.1",
 	});
 
-	server.addTool(weatherTool);
+	server.addTool(getTickerTool);
+	server.addTool(getOrderbookTool);
+	server.addTool(getTradesTool);
+	server.addTool(getAccountsTool);
+	server.addTool(createOrderTool);
+	server.addTool(getOrdersTool);
+	server.addTool(getOrderTool);
+	server.addTool(cancelOrderTool);
 
 	try {
 		await server.start({
 			transportType: "stdio",
 		});
-		console.log("✅ Weather MCP Server started successfully over stdio.");
-		console.log("   You can now connect to it using an MCP client.");
-		console.log("   Try the GET_WEATHER tool with a city name!");
+		console.log("✅ Upbit MCP Server started (stdio)");
 	} catch (error) {
-		console.error("❌ Failed to start Weather MCP Server:", error);
+		console.error("❌ Failed to start Upbit MCP Server:", error);
 		process.exit(1);
 	}
 }
 
 main().catch((error) => {
 	console.error(
-		"❌ An unexpected error occurred in the Weather MCP Server:",
+		"❌ An unexpected error occurred in the Upbit MCP Server:",
 		error,
 	);
 	process.exit(1);

@@ -2,8 +2,6 @@
 
 Fast MCP server for interacting with Upbit. Provides public market data tools and optional private trading tools.
 
-Repository: `https://github.com/IQAIcom/mcp-upbit`
-
 ## Requirements
 
 - Node.js 18+
@@ -49,6 +47,13 @@ Before you begin, you need to get your Upbit API keys:
 ```bash
 pnpm run build
 pnpm run start
+```
+
+For easier testing use this (in project root):
+
+```bash
+pnpm run build
+npx @modelcontextprotocol/inspector node dist/index.js
 ```
 
 If installed globally or via npx, you can also run the bin:

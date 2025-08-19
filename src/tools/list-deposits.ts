@@ -22,12 +22,12 @@ export const listDepositsTool = {
 		ensurePrivateEnabled();
 		const baseURL = `${config.upbit.baseUrl}${config.upbit.apiBasePath}`;
 		const client = createHttpClient(baseURL);
-		const query: Record<string, string> = {
-			page: String(page),
-			limit: String(limit),
+		const query = {
+			page,
+			limit,
+			currency,
+			state,
 		};
-		if (currency) query.currency = currency;
-		if (state) query.state = state;
 		const token = signJwtToken(query);
 		const data = await fetchJson<unknown>(client, "/deposits", {
 			params: query,

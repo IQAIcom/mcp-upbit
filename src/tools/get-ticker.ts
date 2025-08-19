@@ -1,3 +1,4 @@
+/** biome-ignore-all lint/suspicious/noExplicitAny: <not important> */
 import { z } from "zod";
 import { config } from "../lib/config.js";
 import { createHttpClient, fetchJson } from "../lib/http.js";
@@ -18,7 +19,6 @@ export const getTickerTool = {
 		const data = await fetchJson<unknown>(client, "/ticker", {
 			params: { markets: market },
 		});
-		// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 		const item = Array.isArray(data) ? (data as any[])[0] : (data as any);
 		return JSON.stringify(item, null, 2);
 	},

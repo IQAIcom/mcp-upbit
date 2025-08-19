@@ -16,21 +16,23 @@ export function ensurePrivateEnabled(): void {
 }
 
 export function signJwtToken(
-	queryParams?: Record<string, string | number>,
+	params?: Record<string, string | number | boolean | undefined>,
 ): string {
 	const payload: Record<string, unknown> = {
 		access_key: config.upbit.accessKey,
 		nonce: crypto.randomUUID(),
 	};
 
-	if (queryParams && Object.keys(queryParams).length > 0) {
-		const queryString = Object.entries(queryParams)
-			.map(([k, v]) => `${k}=${v}`)
-			.join("&");
-		const queryHash = crypto
-			.createHash("sha512")
-			.update(queryString)
-			.digest("hex");
+	if (params && Object.keys(params).length > 0) {
+		const searchParams = new URLSearchParams();
+		const sortedKeys = Object.keys(params).sort();
+		for (const key of sortedKeys) {
+			const value = params[key];
+			if (value === undefined) continue;
+			searchParams.append(key, String(value));
+		}
+		const encoded = searchParams.toString();
+		const queryHash = crypto.createHash("sha512").update(encoded).digest("hex");
 		payload.query_hash = queryHash;
 		payload.query_hash_alg = "SHA512";
 	}

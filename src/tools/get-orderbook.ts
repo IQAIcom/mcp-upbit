@@ -18,7 +18,7 @@ export const getOrderbookTool = {
 		const data = await fetchJson<unknown>(client, "/orderbook", {
 			params: { markets: market },
 		});
-		// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+		/** biome-ignore lint/suspicious/noExplicitAny: <not important> */
 		const item = Array.isArray(data) ? (data as any[])[0] : (data as any);
 		return JSON.stringify(item, null, 2);
 	},

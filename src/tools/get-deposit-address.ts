@@ -23,7 +23,7 @@ export const getDepositAddressTool = {
 		const client = createHttpClient(baseURL);
 		const query = { currency, net_type };
 		const token = signJwtToken(query);
-		const data = await fetchJson<unknown>(client, "/deposit", {
+		const data = await fetchJson<unknown>(client, "/deposits/coin_address", {
 			params: query,
 			headers: { Authorization: `Bearer ${token}` },
 		});

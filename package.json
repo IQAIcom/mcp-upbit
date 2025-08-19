@@ -7,7 +7,9 @@
 	"bin": {
 		"mcp-upbit-server": "dist/index.js"
 	},
-	"files": ["dist"],
+	"files": [
+		"dist"
+	],
 	"scripts": {
 		"build": "tsc && shx chmod +x dist/index.js",
 		"prepare": "husky",
@@ -39,7 +41,7 @@
 		"zod": "^3.25.7"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "*",
+		"@biomejs/biome": "^2.2.0",
 		"@changesets/cli": "^2.29.4",
 		"@types/node": "^22.15.19",
 		"husky": "^9.0.0",
@@ -49,7 +51,7 @@
 	},
 	"lint-staged": {
 		"*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}": [
-			"biome check --write --organize-imports-enabled=false --no-errors-on-unmatched"
+			"biome check --write --no-errors-on-unmatched"
 		]
 	}
 }

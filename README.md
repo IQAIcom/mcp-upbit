@@ -2,6 +2,10 @@
 
 Fast MCP server for interacting with Upbit. Provides public market data tools and optional private trading tools.
 
+<a href="https://glama.ai/mcp/servers/@IQAIcom/mcp-upbit">
+  <img width="380" height="200" src="https://glama.ai/mcp/servers/@IQAIcom/mcp-upbit/badge" alt="Upbit Server MCP server" />
+</a>
+
 ## Requirements
 
 - Node.js 18+

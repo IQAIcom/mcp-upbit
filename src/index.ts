@@ -8,6 +8,17 @@ import { getOrderbookTool } from "./tools/get-orderbook.js";
 import { getOrdersTool } from "./tools/get-orders.js";
 import { getTickerTool } from "./tools/get-ticker.js";
 import { getTradesTool } from "./tools/get-trades.js";
+import { listWithdrawalAddressesTool } from "./tools/list-withdrawal-addresses.js";
+import { createWithdrawalTool } from "./tools/create-withdrawal.js";
+import { getWithdrawalTool } from "./tools/get-withdrawal.js";
+import { listWithdrawalsTool } from "./tools/list-withdrawals.js";
+import { cancelWithdrawalTool } from "./tools/cancel-withdrawal.js";
+import { getDepositChanceTool } from "./tools/get-deposit-chance.js";
+import { createDepositAddressTool } from "./tools/create-deposit-address.js";
+import { getDepositAddressTool } from "./tools/get-deposit-address.js";
+import { listDepositAddressesTool } from "./tools/list-deposit-addresses.js";
+import { getDepositTool } from "./tools/get-deposit.js";
+import { listDepositsTool } from "./tools/list-deposits.js";
 
 async function main() {
 	console.log("Initializing Upbit MCP Server...");
@@ -25,6 +36,17 @@ async function main() {
 	server.addTool(getOrdersTool);
 	server.addTool(getOrderTool);
 	server.addTool(cancelOrderTool);
+	server.addTool(listWithdrawalAddressesTool);
+	server.addTool(createWithdrawalTool);
+	server.addTool(getWithdrawalTool);
+	server.addTool(listWithdrawalsTool);
+	server.addTool(cancelWithdrawalTool);
+	server.addTool(getDepositChanceTool);
+	server.addTool(createDepositAddressTool);
+	server.addTool(getDepositAddressTool);
+	server.addTool(listDepositAddressesTool);
+	server.addTool(getDepositTool);
+	server.addTool(listDepositsTool);
 
 	try {
 		await server.start({

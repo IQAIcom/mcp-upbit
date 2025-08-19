@@ -46,12 +46,16 @@ export const createOrderTool = {
 		ensurePrivateEnabled();
 		const baseURL = `${config.upbit.baseUrl}${config.upbit.apiBasePath}`;
 		const client = createHttpClient(baseURL);
-		const body: Record<string, string> = { market, side, ord_type };
-		if (volume) body.volume = volume;
-		if (price) body.price = price;
-		if (time_in_force) body.time_in_force = time_in_force;
-		if (smp_type) body.smp_type = smp_type;
-		if (identifier) body.identifier = identifier;
+		const body = {
+			market,
+			side,
+			ord_type,
+			volume,
+			price,
+			time_in_force,
+			smp_type,
+			identifier,
+		};
 		const token = signJwtToken(body);
 		const data = await fetchJson<unknown>(client, "/orders", {
 			method: "POST",

@@ -20,8 +20,7 @@ export const getDepositChanceTool = {
 		ensurePrivateEnabled();
 		const baseURL = `${config.upbit.baseUrl}${config.upbit.apiBasePath}`;
 		const client = createHttpClient(baseURL);
-		const query: Record<string, string> = { currency };
-		if (net_type) query.net_type = net_type;
+		const query = { currency, net_type };
 		const token = signJwtToken(query);
 		const data = await fetchJson<unknown>(client, "/deposits/chance/coin", {
 			params: query,

@@ -136,52 +136,52 @@ Add the following configuration to your MCP client settings (e.g., `claude_deskt
 <!-- AUTO-GENERATED TOOLS START -->
 
 ### `CANCEL_ORDER`
-Cancel an Upbit order (requires private API)
+Cancel an existing Upbit order (requires private API)
 
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
-| `uuid` | string | ✅ | Order UUID to cancel |
+| `uuid` | string | ✅ |  |
 
 ### `CANCEL_WITHDRAWAL`
-Cancel a pending Upbit withdrawal (requires private API)
+Cancel a digital asset withdrawal by UUID (requires private API)
 
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
-| `uuid` | string | ✅ | Withdrawal UUID to cancel |
+| `uuid` | string | ✅ |  |
 
 ### `CREATE_DEPOSIT_ADDRESS`
-Create a deposit address for a currency (requires private API)
+Request creation of a deposit address (requires private API)
 
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
-| `currency` | string | ✅ | Currency code (e.g., BTC) |
-| `net_type` | string | ✅ | Network type |
+| `currency` | string | ✅ |  |
+| `net_type` | string | ✅ |  |
 
 ### `CREATE_ORDER`
 Create an Upbit order (requires private API)
 
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
-| `market` | string | ✅ | Market code (e.g., KRW-BTC) |
-| `side` | string | ✅ | Order side: bid (buy) or ask (sell) |
-| `ord_type` | string | ✅ | Order type: limit, price, or market |
-| `volume` | string |  | Order volume (required for limit/market sell) |
-| `price` | string |  | Order price (required for limit/market buy) |
-| `time_in_force` | string |  | Time in force: ioc, fok, or post_only |
-| `smp_type` | string |  | Self-match prevention: cancel_maker, cancel_taker, or reduce |
-| `identifier` | string |  | Custom order identifier |
+| `market` | string | ✅ |  |
+| `side` | string | ✅ |  |
+| `ord_type` | string | ✅ |  |
+| `volume` | string |  |  |
+| `price` | string |  |  |
+| `time_in_force` | string |  |  |
+| `smp_type` | string |  |  |
+| `identifier` | string |  |  |
 
 ### `CREATE_WITHDRAWAL`
-Create an Upbit withdrawal (requires private API)
+Request a digital asset withdrawal (requires private API)
 
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
-| `currency` | string | ✅ | Currency code |
-| `amount` | string | ✅ | Withdrawal amount |
-| `address` | string | ✅ | Destination address |
-| `net_type` | string | ✅ | Network type |
-| `secondary_address` | string |  | Secondary address (memo/tag) |
-| `transaction_type` | string |  | Transaction type |
+| `currency` | string | ✅ |  |
+| `amount` | string | ✅ |  |
+| `address` | string | ✅ |  |
+| `net_type` | string | ✅ |  |
+| `secondary_address` | string |  |  |
+| `transaction_type` | string |  |  |
 
 ### `GET_ACCOUNTS`
 Get Upbit account balances (requires private API enabled)
@@ -189,52 +189,52 @@ Get Upbit account balances (requires private API enabled)
 _No parameters_
 
 ### `GET_DEPOSIT`
-Get details of a specific deposit (requires private API)
+Get a single deposit by UUID (requires private API)
 
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
-| `uuid` | string | ✅ | Deposit UUID |
+| `uuid` | string | ✅ |  |
 
 ### `GET_DEPOSIT_ADDRESS`
-Get deposit address for a currency (requires private API)
+Get a single deposit address for a currency and net_type (private)
 
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
-| `currency` | string | ✅ | Currency code |
-| `net_type` | string | ✅ | Network type |
+| `currency` | string | ✅ |  |
+| `net_type` | string | ✅ |  |
 
 ### `GET_DEPOSIT_CHANCE`
-Get deposit eligibility for a currency (requires private API)
+Get deposit availability information for a currency (private)
 
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
-| `currency` | string | ✅ | Currency code |
-| `net_type` | string |  | Network type |
+| `currency` | string | ✅ |  |
+| `net_type` | string |  |  |
 
 ### `GET_ORDER`
-Get details of a specific order (requires private API)
+Get a single Upbit order (requires private API)
 
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
-| `uuid` | string |  | Order UUID |
-| `identifier` | string |  | Custom order identifier |
+| `uuid` | string |  |  |
+| `identifier` | string |  |  |
 
 ### `GET_ORDERBOOK`
-Get orderbook snapshot from Upbit for a single market
+Get orderbook snapshot for a given market
 
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
 | `market` | string | ✅ | Upbit market code, e.g., KRW-BTC |
 
 ### `GET_ORDERS`
-Get list of orders (requires private API)
+List Upbit orders (requires private API)
 
 | Parameter | Type | Required | Default | Description |
 |-----------|------|----------|---------|-------------|
-| `market` | string |  |  | Market code filter |
-| `state` | string |  |  | Order state: wait, watch, done, cancel |
-| `page` | number |  | 1 | Page number |
-| `limit` | number |  | 100 | Items per page |
+| `market` | string |  |  |  |
+| `state` | string |  | "wait" |  |
+| `page` | integer |  | 1 |  |
+| `limit` | integer |  | 100 |  |
 
 ### `GET_TICKER`
 Get the latest ticker data from Upbit for a single market
@@ -244,48 +244,48 @@ Get the latest ticker data from Upbit for a single market
 | `market` | string | ✅ | Upbit market code, e.g., KRW-BTC |
 
 ### `GET_TRADES`
-Get recent trades from Upbit for a single market
+Get recent trades for a market
 
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
 | `market` | string | ✅ | Upbit market code, e.g., KRW-BTC |
 
 ### `GET_WITHDRAWAL`
-Get details of a specific withdrawal (requires private API)
+Get a single withdrawal by UUID (requires private API)
 
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
-| `uuid` | string | ✅ | Withdrawal UUID |
+| `uuid` | string | ✅ |  |
 
 ### `LIST_DEPOSIT_ADDRESSES`
-List all deposit addresses (requires private API)
+List deposit addresses for all currencies (requires private API)
 
 _No parameters_
 
 ### `LIST_DEPOSITS`
-List deposit history (requires private API)
+List deposits (requires private API)
 
 | Parameter | Type | Required | Default | Description |
 |-----------|------|----------|---------|-------------|
-| `currency` | string |  |  | Currency code filter |
-| `state` | string |  |  | Deposit state filter |
-| `page` | number |  | 1 | Page number |
-| `limit` | number |  | 100 | Items per page |
+| `currency` | string |  |  |  |
+| `state` | string |  |  |  |
+| `page` | integer |  | 1 |  |
+| `limit` | integer |  | 50 |  |
 
 ### `LIST_WITHDRAWAL_ADDRESSES`
-List withdrawal addresses (requires private API)
+List registered withdrawal-allowed addresses (requires private API)
 
 _No parameters_
 
 ### `LIST_WITHDRAWALS`
-List withdrawal history (requires private API)
+List withdrawals (requires private API)
 
 | Parameter | Type | Required | Default | Description |
 |-----------|------|----------|---------|-------------|
-| `currency` | string |  |  | Currency code filter |
-| `state` | string |  |  | Withdrawal state filter |
-| `page` | number |  | 1 | Page number |
-| `limit` | number |  | 100 | Items per page |
+| `currency` | string |  |  |  |
+| `state` | string |  |  |  |
+| `page` | integer |  | 1 |  |
+| `limit` | integer |  | 50 |  |
 
 <!-- AUTO-GENERATED TOOLS END -->
 

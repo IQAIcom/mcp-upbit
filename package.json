@@ -1,6 +1,6 @@
 {
 	"name": "@iqai/mcp-upbit",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"description": "Fast MCP server for interacting with Upbit (public market data and optional private trading tools).",
 	"main": "dist/index.js",
 	"type": "module",
